@@ -215,7 +215,7 @@ export const App = () => {
       setResult(data);
       setUsage(data.usage ?? null);
       setCheckoutUrl(null);
-      setResultLabel("Prompt result (background removed)");
+      setResultLabel("Generated image (background removed)");
     } catch (err) {
       if (err instanceof ApiError) {
         setError(err.message);
@@ -312,7 +312,7 @@ export const App = () => {
       dataUrl: result.imageDataUrl,
       altText: {
         decorative: false,
-        text: "Image generated with Reve",
+        text: "Generated image",
       },
     });
   };
@@ -323,26 +323,16 @@ export const App = () => {
         <div className={styles.hero}>
           <Text variant="bold">Creator Super Tool</Text>
           <Text>
-            AI image generation with automatic prompt optimization, cleaner
-            backgrounds, and quick Canva insertion.
+            AI image generation and enhancement with quick Canva insertion.
           </Text>
-          {usage ? (
-            <Text>
-              Plan: {usage.billingStatus.toUpperCase()} | Free remaining:{" "}
-              {usage.remainingFree}/{usage.freeLimit}
-            </Text>
-          ) : null}
         </div>
 
         <div className={styles.card}>
           <div className={styles.sectionHeader}>
-            <Text variant="bold">Create (Auto Remove BG)</Text>
-            <span className={styles.pill}>Prompt to image</span>
+            <Text variant="bold">Create image</Text>
+            <span className={styles.pill}>Image</span>
           </div>
-          <Text>
-            Type your idea and the app automatically optimizes it before sending
-            to Reve.
-          </Text>
+          <Text>Type your idea and generate a new image.</Text>
           <textarea
             className={styles.textArea}
             value={prompt}
