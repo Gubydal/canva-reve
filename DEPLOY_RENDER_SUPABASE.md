@@ -30,7 +30,7 @@ Set environment variables in Render:
 - `LEMON_SQUEEZY_STORE_ID=<store id>`
 - `LEMON_SQUEEZY_VARIANT_ID=<variant id>`
 - `LEMON_SQUEEZY_WEBHOOK_SECRET=<secret>`
-- `SUPABASE_URL=<project url>`
+- `SUPABASE_URL=https://<project-ref>.supabase.co` (must be full HTTPS URL, not just project ref)
 - `SUPABASE_SERVICE_ROLE_KEY=<service role key>`
 
 Local Canva development still uses:

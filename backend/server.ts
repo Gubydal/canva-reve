@@ -164,13 +164,40 @@ const getSupabaseServiceRoleKey = (): string | null => {
   return key;
 };
 
+const isValidHttpUrl = (value: string): boolean => {
+  try {
+    const parsed = new URL(value);
+    return parsed.protocol === "http:" || parsed.protocol === "https:";
+  } catch {
+    return false;
+  }
+};
+
 const supabaseUrl = getSupabaseUrl();
 const supabaseServiceRoleKey = getSupabaseServiceRoleKey();
 
-const supabase: SupabaseClient | null =
-  supabaseUrl && supabaseServiceRoleKey
-    ? createClient(supabaseUrl, supabaseServiceRoleKey)
-    : null;
+const supabase: SupabaseClient | null = (() => {
+  if (!supabaseUrl || !supabaseServiceRoleKey) {
+    return null;
+  }
+
+  if (!isValidHttpUrl(supabaseUrl)) {
+    console.warn(
+      "SUPABASE_URL is invalid. Falling back to local usage storage.",
+    );
+    return null;
+  }
+
+  try {
+    return createClient(supabaseUrl, supabaseServiceRoleKey);
+  } catch (error) {
+    console.warn(
+      "Failed to initialize Supabase client. Falling back to local usage storage.",
+      error,
+    );
+    return null;
+  }
+})();
 
 const normalizeBase64 = (base64OrDataUrl: string): string => {
   const value = base64OrDataUrl.trim();
