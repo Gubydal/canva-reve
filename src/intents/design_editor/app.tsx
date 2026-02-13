@@ -405,32 +405,49 @@ export const App = () => {
 
           <label className={styles.label}>
             Mode
-            <select
-              className={styles.input}
-              value={enhanceOperation}
-              onChange={(event) =>
-                setEnhanceOperation(event.target.value as EnhanceOperation)
-              }
-            >
-              <option value="upscale">Enhance + Upscale</option>
-              <option value="remove_background">Remove Background</option>
-            </select>
+            <div className={styles.choiceRow}>
+              <button
+                type="button"
+                className={`${styles.choiceButton} ${
+                  enhanceOperation === "upscale"
+                    ? styles.choiceButtonActive
+                    : ""
+                }`}
+                onClick={() => setEnhanceOperation("upscale")}
+              >
+                Enhance + Upscale
+              </button>
+              <button
+                type="button"
+                className={`${styles.choiceButton} ${
+                  enhanceOperation === "remove_background"
+                    ? styles.choiceButtonActive
+                    : ""
+                }`}
+                onClick={() => setEnhanceOperation("remove_background")}
+              >
+                Remove Background
+              </button>
+            </div>
           </label>
 
           {enhanceOperation === "upscale" ? (
             <label className={styles.label}>
               Upscale factor
-              <select
-                className={styles.input}
-                value={upscaleFactor}
-                onChange={(event) =>
-                  setUpscaleFactor(Number(event.target.value))
-                }
-              >
-                <option value={2}>2x</option>
-                <option value={3}>3x</option>
-                <option value={4}>4x</option>
-              </select>
+              <div className={styles.choiceRow}>
+                {[2, 3, 4].map((factor) => (
+                  <button
+                    key={factor}
+                    type="button"
+                    className={`${styles.choiceButton} ${
+                      upscaleFactor === factor ? styles.choiceButtonActive : ""
+                    }`}
+                    onClick={() => setUpscaleFactor(factor)}
+                  >
+                    {factor}x
+                  </button>
+                ))}
+              </div>
             </label>
           ) : null}
 
@@ -478,23 +495,11 @@ export const App = () => {
               <span className={styles.pill}>Result</span>
             </div>
 
-            {result.promptOptimized && result.optimizedPrompt ? (
-              <div className={styles.metaBox}>
-                <Text variant="bold">Optimized by LongCat</Text>
-                <Text>{result.optimizedPrompt}</Text>
-              </div>
-            ) : null}
-
             <img
               src={result.imageDataUrl}
               className={styles.previewImage}
               alt={resultLabel}
             />
-            <div className={styles.metaRow}>
-              <Text>Request: {result.requestId}</Text>
-              <Text>Credits used: {result.creditsUsed}</Text>
-              <Text>Remaining: {result.creditsRemaining}</Text>
-            </div>
             <div className={styles.actionWrap}>
               <Button
                 variant="secondary"

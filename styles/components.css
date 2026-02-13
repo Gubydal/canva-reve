@@ -192,6 +192,47 @@
   white-space: nowrap;
 }
 
+.choiceRow {
+  display: flex;
+  gap: var(--ui-kit-space-050);
+  flex-wrap: wrap;
+}
+
+.choiceButton {
+  appearance: none;
+  border: 1px solid rgba(95, 95, 125, 0.3);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  color: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 9px 12px;
+  cursor: pointer;
+  transition:
+    transform 0.14s ease,
+    box-shadow 0.14s ease,
+    border-color 0.14s ease,
+    background 0.14s ease;
+}
+
+.choiceButton:hover {
+  transform: translateY(-1px);
+  border-color: rgba(76, 81, 255, 0.45);
+  box-shadow: 0 8px 16px rgba(76, 81, 255, 0.14);
+}
+
+.choiceButtonActive {
+  border-color: rgba(76, 81, 255, 0.65);
+  background: linear-gradient(
+    135deg,
+    rgba(76, 81, 255, 0.16),
+    rgba(0, 196, 204, 0.12)
+  );
+  color: rgb(42, 47, 173);
+  box-shadow: 0 8px 16px rgba(76, 81, 255, 0.18);
+}
+
 .previewImage {
   width: 100%;
   border-radius: var(--ui-kit-radius-element-standard);
