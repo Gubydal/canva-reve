@@ -366,7 +366,7 @@ export const App = () => {
 
         <div className={styles.card}>
           <div className={styles.sectionHeader}>
-            <Text variant="bold">BG / Enhance ✨</Text>
+            <Text variant="bold">BG / Enhance</Text>
             <span className={styles.pill}>Upload workflow</span>
           </div>
           <Text>
@@ -410,7 +410,7 @@ export const App = () => {
                 type="button"
                 className={`${styles.choiceButton} ${
                   enhanceOperation === "upscale"
-                    ? styles.choiceButtonActive
+                    ? styles.choiceButtonPrimaryActive
                     : ""
                 }`}
                 onClick={() => setEnhanceOperation("upscale")}
@@ -421,7 +421,7 @@ export const App = () => {
                 type="button"
                 className={`${styles.choiceButton} ${
                   enhanceOperation === "remove_background"
-                    ? styles.choiceButtonActive
+                    ? styles.choiceButtonSecondaryActive
                     : ""
                 }`}
                 onClick={() => setEnhanceOperation("remove_background")}
@@ -440,7 +440,9 @@ export const App = () => {
                     key={factor}
                     type="button"
                     className={`${styles.choiceButton} ${
-                      upscaleFactor === factor ? styles.choiceButtonActive : ""
+                      upscaleFactor === factor
+                        ? styles.choiceButtonTertiaryActive
+                        : ""
                     }`}
                     onClick={() => setUpscaleFactor(factor)}
                   >
