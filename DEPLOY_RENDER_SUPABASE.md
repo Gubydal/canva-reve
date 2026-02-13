@@ -13,7 +13,7 @@
 Create a **Web Service** from this repo.
 
 - Build command: `npm install && npm run build`
-- Start command: `npm start`
+- Start command: `npm start` (runs backend API server only)
 - Runtime: Node 20+
 
 Set environment variables in Render:
@@ -32,6 +32,10 @@ Set environment variables in Render:
 - `LEMON_SQUEEZY_WEBHOOK_SECRET=<secret>`
 - `SUPABASE_URL=<project url>`
 - `SUPABASE_SERVICE_ROLE_KEY=<service role key>`
+
+Local Canva development still uses:
+
+- `npm run start:dev`
 
 ## 3) Lemon Squeezy webhook
 
