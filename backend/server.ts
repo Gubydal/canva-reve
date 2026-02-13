@@ -78,7 +78,7 @@ type PostProcess =
 
 const app = express();
 const port = Number(process.env.CANVA_BACKEND_PORT || 3001);
-const FREE_IMAGE_LIMIT = 1;
+const FREE_IMAGE_LIMIT = 5;
 const DATA_DIR = path.join(process.cwd(), "backend", "data");
 const USAGE_FILE_PATH = path.join(DATA_DIR, "usage.json");
 
