@@ -321,7 +321,7 @@ export const App = () => {
     <div className={styles.scrollContainer}>
       <Rows spacing="2u">
         <div className={styles.hero}>
-          <Text variant="bold">Reve Creator Pro</Text>
+          <Text variant="bold">Creator Super Tool</Text>
           <Text>
             AI image generation with automatic prompt optimization, cleaner
             backgrounds, and quick Canva insertion.

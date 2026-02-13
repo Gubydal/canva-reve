@@ -38,7 +38,7 @@ describe("Hello World Tests", () => {
     const result = renderInTestProvider(<App />);
 
     expect(mockUseFeatureSupport).toHaveBeenCalled();
-    expect(result.getByText("Reve Creator")).toBeTruthy();
+    expect(result.getByText("Creator Super Tool")).toBeTruthy();
     expect(
       result.getByRole("button", {
         name: "Create",
